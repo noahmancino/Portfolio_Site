@@ -1,17 +1,16 @@
 <%- include('partials/head.ejs') %>
 <body>
 <%- include('partials/navbar.ejs') %>
-</body>
 <h1 style="text-align: center">Posts</h1>
 <hr class="blog">
 <div class="blog-post">
     <% for (let i = 0; i < posts.length; i++) { %>
     <!-- TODO: add image to blog posts -->
-    <h2 style="margin-bottom: 0"> <%= posts[i].title%> </h2>
+    <a href="/blog/post?id=<%=posts[i]._id.toString()%>"> <h2 style="margin-bottom: 0"> <%= posts[i].title%> </h2></a>
     <small> <%= posts[i].blurb %> </small>
     <br><br>
-    <small style="color: gray"><pre class="tab"><%= posts[i].date%>      <img src="/images/iconmonstr-folder-1.svg"> <%= posts[i].subject%></pre></small>
+    <small style="color: gray"><pre class="tab"><%= posts[i].date.toLocaleDateString()%>      <img src="/images/iconmonstr-folder-1.svg"> <%= posts[i].subject%></pre></small>
         <br>
         <% } %>
-
 </div>
+</body>

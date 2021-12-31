@@ -36,9 +36,11 @@
 }
 
 .biography-container {
-    width: 70%;
-    float: right;
+    width: 65%;
     position: static;
+    margin-right: 5vw;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
 .summary-container {
@@ -46,6 +48,8 @@
     float: left;
     position: static;
     text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
 }
 .blog-post {
     text-align: center;
@@ -54,12 +58,31 @@
     height: 2rem;
 }
 body {
-    background-color: #c1c1c1;
+    background-color: #ffff;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem
 }
 
 hr.blog {
     width: 25%;
     border-top: 1px solid black;
 }
+
+.article {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    text-align: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: darkgray;
+}
+

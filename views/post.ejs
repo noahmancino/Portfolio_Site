@@ -1,0 +1,19 @@
+<%- include('partials/head.ejs') %>
+<body>
+<%- include('partials/navbar.ejs') %>
+<div class="article">
+    <div>
+        <h1 style="margin-bottom: 0"><%= blog_post.title %></h1>
+    </div>
+
+    <div>
+        <small style="color: gray"><pre class="tab"><%= blog_post.date.toLocaleDateString()%>      <img src="/images/iconmonstr-folder-1.svg"> <%= blog_post.subject%></pre></small>
+    </div>
+
+    <br>
+
+    <div>
+        <%- blog_post.post %>
+    </div>
+</div>
+</body>

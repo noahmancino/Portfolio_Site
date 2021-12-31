@@ -1,3 +1,4 @@
+//TODO: enforce schema on database
 const {MongoClient} = require("mongodb");
 const fs = require("fs");
 
@@ -15,7 +16,11 @@ async function getBlogPosts() {
         documents = await documents.toArray()
         console.log(documents)
         global.blog_posts = documents
-    } finally {
+    }
+    catch (error) {
+        console.log(error)
+    }
+    finally {
         // Ensures that the client will close when you finish/error
         await client.close();
     }

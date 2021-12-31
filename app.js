@@ -1,11 +1,12 @@
 const express = require("express");
-const path = require("path");
 const {getBlogPosts} = require("./mongo")
 global.blog_posts = []
 
 const app = express();
 app.set('view engine', 'ejs')
 app.use(express.static("views"));
+
+//TODO: error handling and input validation for the blog routes
 
 
 /*
@@ -16,7 +17,9 @@ So, I'm just reading from the database every once in a while, and storing the in
 in a global variable (global.blog_posts). Bad practice I'm sure, but I'm the only one who has to deal
 with this code.
  */
-setInterval(getBlogPosts, 30000)
+//TODO: decide how long timeout should be
+getBlogPosts();
+setInterval(getBlogPosts, 100000)
 
 
 // Simply a static webpage
@@ -35,7 +38,18 @@ app.get('/blog/:page([0-9]+)?', (req, res) => {
         req.params.page = 1;
     }
     let start_post = (req.params.page - 1) * 10;
-    res.render('blog', {posts: global.blog_posts.slice(start_post, start_post + 10)})
+    //res.render('blog', {posts: global.blog_posts.slice(start_post, start_post + 10)})
+    //TODO: Paginate the blog
+    res.render('blog', {posts: global.blog_posts})
+})
+
+app.get('/blog/post', (req, res) => {
+    for (let i = 0; i < global.blog_posts.length; i++) {
+        // This part especially is begging for some error handling
+        if (global.blog_posts[i]._id.toString() == req.query.id) {
+            res.render('post', {blog_post: global.blog_posts[i]})
+        }
+    }
 })
 
 app.listen(5001)
