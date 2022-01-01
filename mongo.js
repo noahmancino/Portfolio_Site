@@ -9,9 +9,7 @@ const client = new MongoClient(credentials.database_uri);
 
 async function getBlogPosts() {
     try {
-        // Connect the client to the server
         await client.connect();
-        // Establish and verify connection
         let documents = await client.db("myFirstDatabase").collection("blog_posts").find().sort({date: 1})
         documents = await documents.toArray()
         console.log(documents)
@@ -21,7 +19,6 @@ async function getBlogPosts() {
         console.log(error)
     }
     finally {
-        // Ensures that the client will close when you finish/error
         await client.close();
     }
 }

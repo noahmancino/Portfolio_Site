@@ -32,7 +32,7 @@ app.get('/resume', (req, res) => {
     res.render('resume');
 })
 
-// This section of the site is dynamic and paginated
+// This section of the site is dynamic and (will be) paginated
 app.get('/blog/:page([0-9]+)?', (req, res) => {
     if (req.params.page === undefined) {
         req.params.page = 1;
