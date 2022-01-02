@@ -52,4 +52,8 @@ app.get('/blog/post', (req, res) => {
     }
 })
 
+app.get('/Y86-64', (req, res) => {
+    res.render('y86-64')
+})
+
 app.listen(5001)
